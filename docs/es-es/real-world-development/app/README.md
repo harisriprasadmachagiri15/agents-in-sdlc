@@ -3,10 +3,10 @@ slug: es-es/real-world-development/app
 title: "Aplicación GitHub Copilot"
 authors:
   - geektrainer
-lastUpdated: 2026-06-30
+lastUpdated: 2026-10-22
 ---
 
-La [**aplicación GitHub Copilot**](https://docs.github.com/copilot/concepts/agents/github-copilot-app) es una aplicación de escritorio basada en Copilot CLI que reúne el desarrollo dirigido por agentes en un único espacio de trabajo específico. Añade sesiones de agente en paralelo, modos de sesión intercambiables, lienzos compartidos y gestión nativa de incidencias y solicitudes de incorporación de cambios de GitHub, incluido **Agent Merge**, que guía una solicitud durante reorganizaciones de base, comentarios de revisión, correcciones de CI y la combinación.
+La [**aplicación GitHub Copilot**](https://docs.github.com/copilot/concepts/agents/github-copilot-app) es una aplicación de escritorio basada en Copilot CLI que reúne el desarrollo dirigido por agentes en un único espacio de trabajo específico. Añade sesiones de agente en paralelo, modos de sesión intercambiables, canvases compartidos y gestión nativa de incidencias y solicitudes de incorporación de cambios de GitHub, incluido **Agent Merge**, que guía una solicitud durante las reorganizaciones de base, los comentarios de revisión, las correcciones de integración continua (CI) y la combinación.
 
 El taller sigue un único flujo continuo de Tailspin Toys:
 
@@ -15,12 +15,12 @@ El taller sigue un único flujo continuo de Tailspin Toys:
 3. Parte de la incidencia de filtrado, define el enfoque en modo **Plan**, desarróllalo en modo **Autopilot** y revísalo en modo **Interactive**.
 4. Actualiza las instrucciones del repositorio y aplícalas al trabajo de filtrado.
 5. Personaliza la habilidad `quality-checks` existente y úsala para ejecutar las comprobaciones del proyecto.
-6. Añade el servidor Model Context Protocol (MCP) de Playwright y úsalo para explorar el filtrado en un navegador.
-7. Crea un agente personalizado de control de calidad (QA) y úsalo para revisar los requisitos, la cobertura y las pruebas de verificación.
+6. Añade el servidor del Protocolo de contexto de modelo (MCP) de Playwright y úsalo para explorar el filtrado en un navegador.
+7. Crea un agente personalizado de aseguramiento de la calidad (QA) y úsalo para revisar los requisitos, la cobertura y las pruebas de verificación.
 8. Revisa el cambio completo de filtrado y utiliza Agent Merge para la segunda PR.
-9. Usa el lienzo Database Explorer existente y, después, crea y prueba un lienzo de clasificación respaldado por el repositorio.
+9. Comprueba si hay canvases disponibles y, después, utiliza Database Explorer y crea y prueba un canvas de clasificación respaldado por el repositorio. Si las funciones necesarias no están disponibles, registra el bloqueo y utiliza la alternativa de solo lectura o continúa con el resumen.
 
-Para mantener el taller centrado, crearás dos PR: una para las valoraciones por estrellas y otra para el filtrado con las actualizaciones de instrucciones y de la habilidad, el perfil QA y las pruebas. Empieza cada una desde `main` actualizado. El flujo de filtrado y calidad comparte una sesión, un worktree y una rama para que puedas aprovechar el trabajo realizado mientras exploras cada herramienta. El ejercicio final del lienzo permanece en su propia sesión para que puedas centrarte en crear y probar la superficie compartida en lugar de repetir el flujo de PR.
+Para centrar el taller, crearás dos solicitudes de incorporación de cambios (PR): una para las valoraciones con estrellas y otra para el filtrado con las actualizaciones de instrucciones, la habilidad actualizada, el perfil de aseguramiento de la calidad (QA) y las pruebas. Parte de `main` actualizado en cada una. El flujo de filtrado y calidad comparte una sesión, un árbol de trabajo y una rama para que puedas aprovechar los cambios mientras exploras cada herramienta. El ejercicio final de canvas se mantiene en su sesión para que puedas centrarte en crear y probar la superficie compartida en lugar de repetir el flujo de PR.
 
 ## Lecciones
 
@@ -28,15 +28,15 @@ Para mantener el taller centrado, crearás dos PR: una para las valoraciones por
 |--------|-------|-------------|
 | [0. Requisitos previos][ex0] | Configuración | Instala Node.js y crea tu copia del proyecto Tailspin Toys |
 | [1. Instalar la aplicación Copilot][ex1] | Configuración | Instala la aplicación, conecta el proyecto y familiarízate con el espacio de trabajo |
-| [2. Añadir valoraciones por estrellas: una mejora rápida][ex2] | Primer cambio | Muestra las valoraciones existentes y la alternativa para null y combina la PR 1 |
+| [2. Añadir valoraciones con estrellas: una mejora rápida][ex2] | Primer cambio | Muestra las valoraciones existentes y la alternativa para `null`; después, combina la primera PR |
 | [3. Modos de agente: Plan y Autopilot][ex3] | Modos de agente | Planifica la funcionalidad desde su incidencia, desarróllala con Autopilot y revísala en modo Interactive |
 | [4. Guiar a Copilot con instrucciones personalizadas][ex4] | Contexto | Explora y actualiza las instrucciones y aplícalas al filtrado |
 | [5. Personalizar y utilizar una habilidad quality-checks][ex5] | Comprobaciones repetibles | Explora la habilidad existente, cambia el formato de su informe y ejecútala |
-| [6. Validar la funcionalidad con MCP de Playwright][ex6] | Observación en el navegador | Configura MCP mediante Customize y examina el comportamiento del filtrado |
-| [7. Crear y utilizar un agente QA][ex7] | Requisitos y cobertura | Crea y selecciona un perfil especializado y reúne las pruebas de verificación finales |
-| [8. Crear y combinar la PR de la funcionalidad][ex8] | Revisión y combinación | Revisa el filtrado, las instrucciones, la habilidad, el perfil QA y las pruebas y utiliza Agent Merge para la segunda PR |
-| [9. Explorar y crear lienzos][ex9] | Colaboración | Usa Database Explorer y, después, crea y prueba un lienzo de clasificación respaldado por el repositorio |
-| [10. Repaso y pasos siguientes][ex10] | Resumen | Revisa el flujo, los recursos creados y otros materiales |
+| [6. Validar la funcionalidad con Playwright MCP][ex6] | Observación en el navegador | Configura MCP mediante Customize y examina el comportamiento del filtrado |
+| [7. Crear y usar un agente de QA][ex7] | Requisitos y cobertura | Crea y selecciona un perfil especializado y reúne las pruebas finales de verificación |
+| [8. Crear y combinar la PR de la funcionalidad][ex8] | Revisión y combinación | Revisa el filtrado, las instrucciones, la habilidad, el perfil de QA y las pruebas; después, utiliza Agent Merge para la segunda PR |
+| [9. Explorar y crear canvases][ex9] | Colaboración | Usa Database Explorer y, después, crea y prueba un canvas de clasificación respaldado por el repositorio |
+| [10. Repaso y próximos pasos][ex10] | Resumen | Revisa el flujo de trabajo, los recursos creados y otros materiales |
 
 ## Requisitos previos
 
@@ -47,13 +47,13 @@ Antes de asistir a este taller, asegúrate de disponer de:
 - [ ] [Git instalado][install-git] en el ordenador
 
 > [!TIP]
-> ¿No tienes un plan de pago? Los estudiantes verificados pueden obtener GitHub Copilot gratis mediante [GitHub Education][callout-student-plan-education]. El plan **Copilot Student** incluye el agente, MCP, la revisión de código y las funcionalidades de Copilot CLI que se utilizan en este taller, por lo que permite completar todos los recorridos.
+> ¿No tienes un plan de pago? Los estudiantes verificados pueden obtener GitHub Copilot gratis mediante [GitHub Education][callout-student-plan-education]. El plan **Copilot Student** incluye el agente, MCP, la revisión de código y Copilot CLI que se utilizan en este taller, por lo que permite completar todos los recorridos.
 
 > [!NOTE]
 > Como la aplicación Copilot se ejecuta en tu propio equipo y no en un codespace, la [Lección 0][ex0] explica cómo instalar Node.js y crear tu copia del proyecto antes de instalar la aplicación.
 
 > [!NOTE]
-> Si utilizas Copilot Business o Copilot Enterprise, el administrador debe habilitar la directiva **Copilot CLI** para que puedas utilizar la aplicación.
+> Si utilizas Copilot Business o Copilot Enterprise, el administrador debe mantener habilitada la directiva **GitHub Copilot app**. Es una directiva independiente de la de Copilot CLI.
 
 ## Comenzar
 
